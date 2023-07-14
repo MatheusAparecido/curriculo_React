@@ -1,23 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import "./css/app.css";
 
 function App() {
+  const [content, setContent] = useState("Select your Language");
+
+  const handleClick = () => {
+    const newContent =
+      content === "Select your Language"
+        ? "Selecione seu Idioma"
+        : "Select your Language";
+    setContent(newContent);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div id="app">
+      <div id="divLanguage">
+        <label id="language">{content} </label>
+        <button id="btn_language" onClick={handleClick}>
+          &#10148;
+        </button>
+      </div>
+      <div id="divButtons">
+        <Link to={"/english"}>
+          <button id="btn_english"></button>
+        </Link>
+
+        <Link to={"/portuguese"}>
+          <button id="btn_portuguese"></button>
+        </Link>
+      </div>
     </div>
   );
 }
